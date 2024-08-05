@@ -12,8 +12,9 @@ class GoogleEmbedding
         $all_embeddings = [];
         $max = 100;
         while($total_documents > $max){
-            // Por padrão a API aceita no máximo 100 documentos em batch
-            // Caso seja recebido mais que isso de 100 documentos, será realizado outras mais requisições
+          // Por padrão a API aceita no máximo 100 documentos em batch
+            // Caso o método embed receba um array com mais de 100 documentos será enviado em partes até que todos
+            // os documentos seja tornado em embeddings
            $doc = array_slice($documents, 0, $max);
            $new_embeddings = $this->embed($doc, $taskType, $model);
            $all_embeddings = array_merge($all_embeddings, $new_embeddings);
