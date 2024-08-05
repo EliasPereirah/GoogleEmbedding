@@ -55,7 +55,7 @@ class GoogleEmbedding
         curl_close($ch);
         $data = json_decode($response)->embeddings ?? [];
         if(count($data) === 0){
-            print_r($response);
+          //  print_r($response);
         }
         foreach ($data as $item) {
             // formato aceito pela ChromaDB
